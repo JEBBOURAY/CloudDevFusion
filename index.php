@@ -1,32 +1,31 @@
-<?php​
+<?php
 
-​
-echo "Hello World!";​
+echo "Hello World!";
 
-​
-$serverName = getenv('SQL_SERVER_NAME'); // Get server name from environment variables​
 
-$connectionOptions = array(​
+$serverName = getenv('SQL_SERVER_NAME'); // Get server name from environment variables
 
-    "Database" => getenv('SQL_DATABASE_NAME'), // Get database name from environment variables​
+$connectionOptions = array(
 
-    "Uid" => getenv('SQL_UID'),               // Get username from environment variables​
+    "Database" => getenv('SQL_DATABASE_NAME'), // Get database name from environment variables
 
-    "PWD" => getenv('SQL_PWD')                // Get password from environment variables​
+    "Uid" => getenv('SQL_UID'),               // Get username from environment variables
 
-);​
+    "PWD" => getenv('SQL_PWD')                // Get password from environment variables
 
-​
-try {​
+);
 
-    $conn = new PDO("sqlsrv:server=$serverName;Database=".$connectionOptions['Database'], $connectionOptions['Uid'], $connectionOptions['PWD']);​
 
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);​
+try {
 
-    echo "Connected!";​
+    $conn = new PDO("sqlsrv:server=$serverName;Database=".$connectionOptions['Database'], $connectionOptions['Uid'], $connectionOptions['PWD']);
 
-} catch (PDOException $e) {​
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    echo "Connection failed: " . $e->getMessage();​
+    echo "Connected!";
+
+} catch (PDOException $e) {
+
+    echo "Connection failed: " . $e->getMessage();
 
 }
